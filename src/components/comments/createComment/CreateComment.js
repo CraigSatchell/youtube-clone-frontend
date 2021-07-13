@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import CreateComment from './CreateComment.css';
 
 const CreateComment = () => {
    return (
