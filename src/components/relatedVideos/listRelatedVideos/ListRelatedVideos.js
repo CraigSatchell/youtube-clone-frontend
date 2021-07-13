@@ -1,5 +1,5 @@
 import React from 'react';
-import ListRelatedVideos from './ListRelatedVideos';
+import './ListRelatedVideos.css';
 
 const ListRelatedVideos = () => {
     return (

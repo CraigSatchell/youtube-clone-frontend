@@ -1,5 +1,5 @@
 import React from 'react';
-import LikeDislikeComment from './LikeDislikeComment.css';
+import './LikeDislikeComment.css';
 
 const LikeDislikeComment = () => {
     return (

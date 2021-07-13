@@ -1,5 +1,5 @@
 import React from 'react'
-import ViewComment from './ViewComment';
+import './ViewComment.css';
 
 const ViewComment = () => {
     return (

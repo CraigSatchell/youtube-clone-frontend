@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateComment from './CreateComment.css';
+import './CreateComment.css';
 
 const CreateComment = () => {
    return (

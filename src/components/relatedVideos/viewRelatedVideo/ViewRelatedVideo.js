@@ -1,5 +1,5 @@
 import React from 'react';
-import ViewRelatedVideo from './ViewRelatedVideo';
+import './ViewRelatedVideo.css';
 
 const ViewRelatedVideo = () => {
     return (

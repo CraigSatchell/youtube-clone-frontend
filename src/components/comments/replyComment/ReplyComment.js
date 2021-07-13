@@ -1,5 +1,5 @@
 import React from 'react';
-import ReplyComment from './ReplyComment';
+import './ReplyComment.css';
 
 const ReplyComment = () => {
     return (

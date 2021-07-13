@@ -1,5 +1,5 @@
 import React from 'react';
-import ListComments from './ListComments';
+import './ListComments.css';
 
 const ListComments = () => {
     return (
