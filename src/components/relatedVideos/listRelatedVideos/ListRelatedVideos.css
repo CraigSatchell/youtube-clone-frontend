@@ -4,4 +4,6 @@
    width: 100%;
    border: 3px solid gray;
    min-height: 700px;
+   min-width: 500px;
+
 }

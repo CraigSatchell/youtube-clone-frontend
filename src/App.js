@@ -6,7 +6,7 @@ import ActiveVideo from './components/activeVideo/ActiveVideo';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ListComments from './components/comments/listComments/ListComments';
 import Header from './components/header/Header';
-import { Grid, Container } from '@material-ui/core';
+import { Box, Grid, Container } from '@material-ui/core';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -68,7 +68,7 @@ const App = () => {
                   <ActiveVideo />
                   <ListComments />
                </Grid>
-               <Grid item sm={4}>
+               <Grid item xs={6} md={4}>
                   <ListRelatedVideos />
                </Grid>
             </Grid>
