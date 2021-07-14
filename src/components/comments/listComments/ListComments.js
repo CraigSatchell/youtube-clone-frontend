@@ -3,8 +3,8 @@ import './ListComments.css';
 
 const ListComments = () => {
     return (
-        <div>
-            
+        <div id='list-comments'>
+            <h4>Comments</h4>
         </div>
     )
 }

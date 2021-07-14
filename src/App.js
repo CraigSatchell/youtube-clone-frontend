@@ -4,6 +4,7 @@ import './App.css';
 import apiKey from './api/apiKey';
 import ActiveVideo from './components/activeVideo/ActiveVideo';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
+import ListComments from './components/comments/listComments/ListComments';
 import Header from './components/header/Header';
 import { Grid, Container } from '@material-ui/core';
 
@@ -62,14 +63,14 @@ const App = () => {
       <div id='app'>
          <Header />
          <Container maxWidth='lg'>
-            <Grid container spacing={2}>
+            <Grid container spacing={6}>
                <Grid item sm={4} md={8}>
                   <ActiveVideo />
+                  <ListComments />
                </Grid>
                <Grid item sm={4}>
                   <ListRelatedVideos />
                </Grid>
-
             </Grid>
          </Container>
       </div>
