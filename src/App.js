@@ -31,7 +31,7 @@ const App = () => {
       axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
    }
 
-   
+
    // fetch all video comments
    const getAllComments = () => {
       axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
@@ -61,10 +61,15 @@ const App = () => {
       getCommentsByVideoId('1111');
    }, []);
 
+   
+   // get related video
+   useEffect(() => {
+      getRelatedVideos('E6HhI1uIKKs');
+   })
 
 
    console.log(currentVideo);
-   getRelatedVideos('E6HhI1uIKKs');
+
 
    return (
       <div id='app'>
