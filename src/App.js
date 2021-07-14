@@ -14,23 +14,43 @@ const App = () => {
    const [allVideos, setAllVideos] = useState({});
 
 
+
    // useEffect(() => {
-   //    axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}`).then(response => console.log(response.data)).catch(err => { console.log(err); })  })
+   //    (async () => {
+   //       await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err))
+   //    })()
+   // }, []);
 
-   // }, [currentVideo]);
+   const apiPath = 'http://localhost:5000/api/comments';
+
+   const getYouTubeVideos = () => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err));
+   }
+
+   const getAllComments = () => {
+      axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
+   }
 
 
-   
+   const getCommentsByVideoId = (videoId) => {
+      axios.get(`${apiPath}/${videoId}`).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
+   }
+
+   // // get YouTube videos
+   // useEffect(() => {
+   //    getYouTubeVideos();
+   // }, [])
+
+   // get video comments
    useEffect(() => {
-      (async () => {
-         await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err))
-      })()
+      getAllComments();
    }, []);
 
+   // get video comments by video id
+   useEffect(() => {
+      getCommentsByVideoId('1111');
+   }, []);
 
-   //    (async () => {
-   //       await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err))
-   //   })()
 
 
    return (
