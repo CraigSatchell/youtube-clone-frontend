@@ -4,7 +4,7 @@ import './ActiveVideo.css';
 
 const ActiveVideo = () => {
    return (
-      <div>
+      <div id='active-video'>
          
       </div>
    )

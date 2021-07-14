@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import apiKey from './api/apiKey';
+import ActiveVideo from './components/activeVideo/ActiveVideo';
+import Header from './components/header/Header';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -57,6 +59,8 @@ const App = () => {
    return (
       <div id='app'>
          <h1>YouTube Clone</h1>
+         <Header />
+         <ActiveVideo  />
       </div>
    )
 }
