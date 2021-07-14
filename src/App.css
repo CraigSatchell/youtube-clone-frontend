@@ -4,3 +4,22 @@
     box-sizing: border-box;
     font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+#app .main-view {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+#app .left-column {
+    min-width: 600px;
+    max-width: 900px;
+    padding: 50px;
+    flex-basis: 800px;
+}
+
+#app .right-column {
+    width: 500px;
+    padding: 50px;
+}

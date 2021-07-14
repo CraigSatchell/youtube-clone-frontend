@@ -2,11 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import apiKey from './api/apiKey';
-import ActiveVideo from './components/activeVideo/ActiveVideo';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
-import ListComments from './components/comments/listComments/ListComments';
+import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
-import { Box, Grid, Container } from '@material-ui/core';
+import { Grid, Container } from '@material-ui/core';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -62,17 +61,14 @@ const App = () => {
    return (
       <div id='app'>
          <Header />
-         <Container maxWidth='lg'>
-            <Grid container spacing={6}>
-               <Grid item sm={4} md={8}>
-                  <ActiveVideo />
-                  <ListComments />
-               </Grid>
-               <Grid item xs={6} md={4}>
+            <div className="main-view">
+               <div className="left-column">
+                  <ViewActiveVideo />
+               </div>
+               <div className="right-column">
                   <ListRelatedVideos />
-               </Grid>
-            </Grid>
-         </Container>
+               </div>
+            </div>
       </div>
    )
 }
