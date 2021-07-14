@@ -11,34 +11,31 @@ const App = () => {
    const [likes, setLikes] = useState('');
    const [dislikes, setDislikes] = useState('');
    const [searchText, setSearchText] = useState('');
-   const [allVideos, setAllVideos] = useState({});
 
 
-
-   // useEffect(() => {
-   //    (async () => {
-   //       await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err))
-   //    })()
-   // }, []);
 
    const apiPath = 'http://localhost:5000/api/comments';
 
-   const getYouTubeVideos = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=10&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err.message));
+   // fetch current video from YouTube API
+   const getCurrentVideo = () => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
+   // fetch all video comments
    const getAllComments = () => {
       axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
    }
 
 
+   // fetch video comment by video id
    const getCommentsByVideoId = (videoId) => {
       axios.get(`${apiPath}/${videoId}`).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
    }
 
-   // get YouTube videos
+
+   // get current YouTube video
    useEffect(() => {
-      getYouTubeVideos();
+      getCurrentVideo();
    }, [])
 
 
@@ -54,6 +51,8 @@ const App = () => {
    }, []);
 
 
+
+   console.log(currentVideo);
 
    return (
       <div id='app'>
