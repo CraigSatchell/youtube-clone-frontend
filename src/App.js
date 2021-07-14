@@ -24,7 +24,7 @@ const App = () => {
    const apiPath = 'http://localhost:5000/api/comments';
 
    const getYouTubeVideos = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=10&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err.message));
    }
 
    const getAllComments = () => {
@@ -36,15 +36,17 @@ const App = () => {
       axios.get(`${apiPath}/${videoId}`).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
    }
 
-   // // get YouTube videos
-   // useEffect(() => {
-   //    getYouTubeVideos();
-   // }, [])
+   // get YouTube videos
+   useEffect(() => {
+      getYouTubeVideos();
+   }, [])
+
 
    // get video comments
    useEffect(() => {
       getAllComments();
    }, []);
+
 
    // get video comments by video id
    useEffect(() => {
