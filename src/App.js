@@ -5,7 +5,7 @@ import apiKey from './api/apiKey';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
-import { Grid, Container } from '@material-ui/core';
+
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -27,10 +27,11 @@ const App = () => {
 
 
    // fetch related videos from YouTube API
-   const getRelatedVideos = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
+   const getRelatedVideos = (videoId) => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
    }
 
+   
    // fetch all video comments
    const getAllComments = () => {
       axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
@@ -63,6 +64,7 @@ const App = () => {
 
 
    console.log(currentVideo);
+   getRelatedVideos('E6HhI1uIKKs');
 
    return (
       <div id='app'>
