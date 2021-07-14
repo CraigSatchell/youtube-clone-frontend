@@ -3,7 +3,9 @@ import axios from 'axios';
 import './App.css';
 import apiKey from './api/apiKey';
 import ActiveVideo from './components/activeVideo/ActiveVideo';
+import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import Header from './components/header/Header';
+import { Grid, Container } from '@material-ui/core';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -58,9 +60,18 @@ const App = () => {
 
    return (
       <div id='app'>
-         <h1>YouTube Clone</h1>
          <Header />
-         <ActiveVideo  />
+         <Container maxWidth='lg'>
+            <Grid container spacing={2}>
+               <Grid item sm={4} md={8}>
+                  <ActiveVideo />
+               </Grid>
+               <Grid item sm={4}>
+                  <ListRelatedVideos />
+               </Grid>
+
+            </Grid>
+         </Container>
       </div>
    )
 }
