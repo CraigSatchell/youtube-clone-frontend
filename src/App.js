@@ -5,8 +5,12 @@ import apiKey from './api/apiKey';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
+<<<<<<< HEAD
 import filteredVideos from "./components/searchBar/SearchBar";
 import { Grid, Container } from '@material-ui/core';
+=======
+
+>>>>>>> c6e5e43969543365bbc8366d2e20f81dde178ee7
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -25,6 +29,13 @@ const App = () => {
    const getCurrentVideo = () => {
       axios.get(`https://www.googleapis.com/youtube/v3/search?q=${filteredVideos}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
+
+
+   // fetch related videos from YouTube API
+   const getRelatedVideos = (videoId) => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
+   }
+
 
    // fetch all video comments
    const getAllComments = () => {
@@ -55,9 +66,15 @@ const App = () => {
       getCommentsByVideoId('1111');
    }, []);
 
+   
+   // get related video
+   useEffect(() => {
+      getRelatedVideos('E6HhI1uIKKs');
+   })
 
 
    console.log(currentVideo);
+
 
    return (
       <div id='app'>
