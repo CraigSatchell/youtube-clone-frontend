@@ -25,6 +25,12 @@ const App = () => {
       axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
+
+   // fetch related videos from YouTube API
+   const getRelatedVideos = () => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
+   }
+
    // fetch all video comments
    const getAllComments = () => {
       axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
