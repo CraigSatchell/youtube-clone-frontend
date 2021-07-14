@@ -6,7 +6,7 @@ import './Header.css';
 const Header = () => {
    return (
       <div id='header'>
-         <SearchBar />
+         <SearchBar/>
       </div>
    )
 }

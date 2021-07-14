@@ -5,6 +5,7 @@ import apiKey from './api/apiKey';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
+import filteredVideos from "./components/searchBar/SearchBar";
 import { Grid, Container } from '@material-ui/core';
 
 const App = () => {
@@ -22,7 +23,7 @@ const App = () => {
 
    // fetch current video from YouTube API
    const getCurrentVideo = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${filteredVideos}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
    // fetch all video comments
