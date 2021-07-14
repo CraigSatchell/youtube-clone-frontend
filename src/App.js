@@ -23,7 +23,7 @@ const App = () => {
    
    useEffect(() => {
       (async () => {
-         await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err))
+         await axios.get(`https://www.googleapis.com/youtube/v3/search?q=harrypotter&key=${apiKey}&maxResults=2&part=snippet`).then(response => console.log(response.data)).catch(err => console.log(err))
       })()
    }, []);
 
