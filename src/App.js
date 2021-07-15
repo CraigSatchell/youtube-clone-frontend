@@ -5,12 +5,7 @@ import apiKey from './api/apiKey';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
-<<<<<<< HEAD
-import filteredVideos from "./components/searchBar/SearchBar";
-import { Grid, Container } from '@material-ui/core';
-=======
-
->>>>>>> c6e5e43969543365bbc8366d2e20f81dde178ee7
+import videoSearch from './components/searchBar/SearchBar';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -27,7 +22,7 @@ const App = () => {
 
    // fetch current video from YouTube API
    const getCurrentVideo = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${filteredVideos}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
 
@@ -72,6 +67,16 @@ const App = () => {
       getRelatedVideos('E6HhI1uIKKs');
    })
 
+   // handle search submit
+   const handleSearchSubmit = (event) => {
+      event.preventDefault()
+      setSearchText('');
+   }
+
+   //handle search change
+   const handleSearchChange = (event) => {
+      setSearchText(event.target.value)
+   }
 
    console.log(currentVideo);
 
