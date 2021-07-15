@@ -3,7 +3,7 @@ import ListComments from '../comments/listComments/ListComments';
 import ActiveVideo from '../activeVideo/ActiveVideo';
 import './ViewActiveVideo.css';
 
-const ViewActiveVideo = () => {
+const ViewActiveVideo = (props) => {
    return (
       <div id='view-active-video'>
          <ActiveVideo />
