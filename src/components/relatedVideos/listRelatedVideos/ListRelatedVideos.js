@@ -1,12 +1,24 @@
 import React from 'react';
+import ViewRelatedVideo from '../viewRelatedVideo/ViewRelatedVideo';
 import './ListRelatedVideos.css';
 
-const ListRelatedVideos = () => {
-    return (
-        <div id='list-related-videos'>
-            <h4>Related Videos</h4>
-        </div>
-    )
+const ListRelatedVideos = (props) => {
+
+   const listItem = props.relatedVideos.map((video) => {
+      return (<li key={video.id.videoId}>
+         <ViewRelatedVideo video={video} />
+      </li>)
+   })
+
+
+   return (
+      <div id='list-related-videos'>
+         <h4>Related Videos</h4>
+         <ul>
+            {listItem}
+         </ul>
+      </div>
+   )
 }
 
 // Ally Notes. 

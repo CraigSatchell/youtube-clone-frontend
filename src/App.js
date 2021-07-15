@@ -61,10 +61,10 @@ const App = () => {
    }, []);
 
 
-   // // get related video
-   // useEffect(() => {
-   //    getRelatedVideos('E6HhI1uIKKs');
-   // })
+   // get related video
+   useEffect(() => {
+      getRelatedVideos('E6HhI1uIKKs');
+   },[])
 
    // handle search submit
    const handleSearchSubmit = (event) => {
@@ -89,7 +89,7 @@ const App = () => {
                <ViewActiveVideo currentVideo={currentVideo} />
             </div>
             <div className="right-column">
-               <ListRelatedVideos />
+               <ListRelatedVideos relatedVideos={relatedVideos} />
             </div>
          </div>
       </div>
