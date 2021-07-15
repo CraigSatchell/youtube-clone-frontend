@@ -11,8 +11,8 @@ const App = () => {
    const [relatedVideos, setRelatedVideos] = useState([]);
    const [newComment, setNewComment] = useState('');
    const [newReply, setNewReply] = useState('');
-   const [likes, setLikes] = useState('');
-   const [dislikes, setDislikes] = useState('');
+   const [likes, setLikes] = useState(0);
+   const [dislikes, setDislikes] = useState(0);
    const [searchText, setSearchText] = useState('');
 
 
