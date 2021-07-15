@@ -61,10 +61,10 @@ const App = () => {
    }, []);
 
 
-   // get related video
-   useEffect(() => {
-      getRelatedVideos('E6HhI1uIKKs');
-   })
+   // // get related video
+   // useEffect(() => {
+   //    getRelatedVideos('E6HhI1uIKKs');
+   // })
 
    // handle search submit
    const handleSearchSubmit = (event) => {
@@ -73,13 +73,12 @@ const App = () => {
       alert('submit');
    }
 
+
    //handle search change
    const handleSearchChange = (event) => {
       setSearchText(event.target.value)
       console.log(searchText)
    }
-
-   console.log(currentVideo);
 
 
    return (
