@@ -15,12 +15,12 @@
 
 #app .left-column {
     min-width: 600px;
-    max-width: 900px;
+    max-width: 100%;
     padding: 50px;
-    flex-basis:900px;
+    flex-basis:70%;
 }
 
 #app .right-column {
-    width: 500px;
-    padding: 50px;
+    width: 20%;
+    padding: 50px 25px;
 }
