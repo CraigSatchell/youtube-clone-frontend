@@ -9,14 +9,15 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
-    margin-top: 100px;
+    margin-top: 60px;
+    background-color: #f9f9f9;
 }
 
 #app .left-column {
     min-width: 600px;
     max-width: 900px;
     padding: 50px;
-    flex-basis: 800px;
+    flex-basis:900px;
 }
 
 #app .right-column {

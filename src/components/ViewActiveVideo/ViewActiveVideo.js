@@ -6,7 +6,7 @@ import './ViewActiveVideo.css';
 const ViewActiveVideo = (props) => {
    return (
       <div id='view-active-video'>
-         <ActiveVideo />
+         <ActiveVideo currentVideo={props.currentVideo} />
          <ListComments />
       </div>
    )

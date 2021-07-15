@@ -7,7 +7,7 @@ import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
 
 const App = () => {
-   const [currentVideo, setCurrentVideo] = useState({});
+   const [currentVideo, setCurrentVideo] = useState(null);
    const [relatedVideos, setRelatedVideos] = useState([]);
    const [newComment, setNewComment] = useState('');
    const [newReply, setNewReply] = useState('');
@@ -21,7 +21,7 @@ const App = () => {
 
    // fetch current video from YouTube API
    const getCurrentVideo = (searchText) => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
 
@@ -60,7 +60,7 @@ const App = () => {
       getCommentsByVideoId('1111');
    }, []);
 
-   
+
    // get related video
    useEffect(() => {
       getRelatedVideos('E6HhI1uIKKs');
@@ -84,15 +84,15 @@ const App = () => {
 
    return (
       <div id='app'>
-         <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit}/>
-            <div className="main-view">
-               <div className="left-column">
-                  <ViewActiveVideo />
-               </div>
-               <div className="right-column">
-                  <ListRelatedVideos />
-               </div>
+         <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
+         <div className="main-view">
+            <div className="left-column">
+               <ViewActiveVideo currentVideo={currentVideo} />
             </div>
+            <div className="right-column">
+               <ListRelatedVideos />
+            </div>
+         </div>
       </div>
    )
 }

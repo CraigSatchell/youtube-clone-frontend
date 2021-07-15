@@ -5,10 +5,8 @@ import './ActiveVideo.css';
 const ActiveVideo = (props) => {
    return (
       <div id='active-video'>
-         <iframe id="ytplayer" type="text/html" width="690" height="400"
-               src={`https://www.youtube.com/embed/${props.videoId}`}
-               frameborder="0"></iframe> 
-       </div>
+         {props.currentVideo ? <iframe id="ytplayer" title='currentvideo' width="100%" height="100%" src={`https://www.youtube.com/embed/${props.currentVideo.id.videoId}`}></iframe> : 'Loading'};
+      </div>
    )
 }
 

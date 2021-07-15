@@ -14,11 +14,10 @@ const SearchBar = (props) => {
                     props.handleSearchSubmit(event)
                 }
             }>
-            <label>Search</label>
             <input type='text' name='search'
                 onChange={props.handleSearchChange}
                 value={props.searchText}
-                placeholder='Title'></input>
+                placeholder='Search'></input>
             </form>
         </div>
           {/*<CurrentVideo video={videoSearch}/>*/}

@@ -3,8 +3,8 @@
    top: 0;
    left: 0;
    width: 100%;
+   padding: 0 150px 0 150px;
    background-color: #ffffff;
-   border: 1px dashed red;
    background-image: url('../../images/youtube-logo2.png');
    background-repeat: no-repeat;
 }
