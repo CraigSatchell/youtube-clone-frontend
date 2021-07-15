@@ -5,7 +5,6 @@ import apiKey from './api/apiKey';
 import ListRelatedVideos from './components/relatedVideos/listRelatedVideos/ListRelatedVideos';
 import ViewActiveVideo from './components/ViewActiveVideo/ViewActiveVideo';
 import Header from './components/header/Header';
-import videoSearch from './components/searchBar/SearchBar';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState({});
@@ -21,8 +20,8 @@ const App = () => {
    const apiPath = 'http://localhost:5000/api/comments';
 
    // fetch current video from YouTube API
-   const getCurrentVideo = () => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${videoSearch}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
+   const getCurrentVideo = (searchText) => {
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet`).then(response => setCurrentVideo(response.data.items[0])).catch(err => console.log(err.message));
    }
 
 
@@ -46,8 +45,8 @@ const App = () => {
 
    // get current YouTube video
    useEffect(() => {
-      getCurrentVideo();
-   }, [])
+      getCurrentVideo(searchText);
+   }, [searchText])
 
 
    // get video comments
@@ -71,11 +70,13 @@ const App = () => {
    const handleSearchSubmit = (event) => {
       event.preventDefault()
       setSearchText('');
+      alert('submit');
    }
 
    //handle search change
    const handleSearchChange = (event) => {
       setSearchText(event.target.value)
+      console.log(searchText)
    }
 
    console.log(currentVideo);
@@ -83,7 +84,7 @@ const App = () => {
 
    return (
       <div id='app'>
-         <Header />
+         <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit}/>
             <div className="main-view">
                <div className="left-column">
                   <ViewActiveVideo />

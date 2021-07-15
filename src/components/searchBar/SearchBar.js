@@ -1,11 +1,10 @@
 import React from 'react';
 import './SearchBar.css';
-import CurrentVideo from '../../App';
-import {searchText, setSearchText} from '../../App';
+
 
 
 const SearchBar = (props) => {
-    const videoSearch = props.searchText.length === 0 
+   //  const videoSearch = props.searchText.length === 0 
 
     return (
         <div>
@@ -22,7 +21,7 @@ const SearchBar = (props) => {
                 placeholder='Title'></input>
             </form>
         </div>
-        <CurrentVideo video={videoSearch}/>
+          {/*<CurrentVideo video={videoSearch}/>*/}
         </div>
     )
 }

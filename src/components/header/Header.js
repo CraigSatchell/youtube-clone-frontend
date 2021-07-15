@@ -1,13 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import SearchBar from '../searchBar/SearchBar';
 import './Header.css';
 
 
-const Header = () => {
+const Header = (props) => {
 
    return (
       <div id='header'>
-         <SearchBar/>
+         <SearchBar handleSearchChange={props.handleSearchChange} setSearchText={props.setSearchText} searchText={props.searchText} handleSearchSubmit={props.handleSearchSubmit}/>
       </div>
    )
 }
