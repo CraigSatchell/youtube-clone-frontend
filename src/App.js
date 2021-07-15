@@ -70,6 +70,7 @@ const App = () => {
    const handleSearchSubmit = (event) => {
       event.preventDefault()
       getCurrentVideo(searchText);
+      setSearchText('');   // clear search text values
    }
 
 
