@@ -8,7 +8,7 @@ import Header from './components/header/Header';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState(null);
-   const [relatedVideos, setRelatedVideos] = useState([]);
+   const [relatedVideos, setRelatedVideos] = useState(null);
    const [newComment, setNewComment] = useState('');
    const [newReply, setNewReply] = useState('');
    const [likes, setLikes] = useState(0);
