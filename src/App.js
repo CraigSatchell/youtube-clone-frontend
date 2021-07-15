@@ -45,8 +45,8 @@ const App = () => {
 
    // get current YouTube video
    useEffect(() => {
-      getCurrentVideo(searchText);
-   }, [searchText])
+      getCurrentVideo();
+   }, [])
 
 
    // get video comments
@@ -69,8 +69,7 @@ const App = () => {
    // handle search submit
    const handleSearchSubmit = (event) => {
       event.preventDefault()
-      setSearchText('');
-      alert('submit');
+      getCurrentVideo(searchText);
    }
 
 
