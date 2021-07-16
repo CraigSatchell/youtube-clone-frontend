@@ -9,6 +9,7 @@ import Header from './components/header/Header';
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState(null);
    const [relatedVideos, setRelatedVideos] = useState(null);
+   const [relatedVideoId, setRelatedVideoId] = useState(null)
    const [newComment, setNewComment] = useState('');
    const [newReply, setNewReply] = useState('');
    const [likes, setLikes] = useState(0);
@@ -19,9 +20,10 @@ const App = () => {
 
    const apiPath = 'http://localhost:5000/api/comments';
 
-   // fetch current video from YouTube API
+
+      // fetch current video from YouTube API
    const getCurrentVideo = (searchText) => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => {setCurrentVideo(response.data.items[0]); setRelatedVideos(response.data.items[0].id.videoId)}).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => { setCurrentVideo(response.data.items[0]); setRelatedVideoId(response.data.items[0].id.videoId) }).catch(err => console.log(err.message));
    }
 
 
@@ -63,9 +65,8 @@ const App = () => {
 
    // get related video
    useEffect(() => {
-      if(currentVideo){
-      getRelatedVideos(currentVideo.id.videoId);}
-   },[currentVideo.id.videoId])
+      getRelatedVideos(relatedVideoId);
+   },[relatedVideoId])
 
 
    // handle search submit
