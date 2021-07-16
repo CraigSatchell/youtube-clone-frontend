@@ -63,9 +63,8 @@ const App = () => {
 
    // get related video
    useEffect(() => {
-      if(currentVideo){
-      getRelatedVideos(currentVideo.id.videoId);}
-   },[currentVideo.id.videoId])
+      getRelatedVideos('E6HhI1uIKKs');
+   },[])
 
 
    // handle search submit
