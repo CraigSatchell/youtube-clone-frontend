@@ -27,7 +27,7 @@ const App = () => {
 
    // fetch related videos from YouTube API
    const getRelatedVideos = (videoId) => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${apiKey}`).then(response => console.log(response.data)).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?relatedToVideoId=${videoId}&type=video&key=${apiKey}&part=snippet`).then(response => setRelatedVideos(response.data.items)).catch(err => console.log(err.message));
    }
 
 
@@ -66,6 +66,7 @@ const App = () => {
       getRelatedVideos('E6HhI1uIKKs');
    },[])
 
+
    // handle search submit
    const handleSearchSubmit = (event) => {
       event.preventDefault()
@@ -80,6 +81,7 @@ const App = () => {
       console.log(searchText)
    }
 
+   console.log(relatedVideos);
 
    return (
       <div id='app'>
