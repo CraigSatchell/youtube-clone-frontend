@@ -1,6 +1,10 @@
-#create-comment {
-    margin-top: 25px;
-    min-height: 200px;
-    border: 2px dashed green;
 
+#comment-bar input[type='text'] {
+    margin-top: 10px;
+    border-color: #999999;
+    outline: none;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 1em;
+    padding: 3px 10px;
 }
