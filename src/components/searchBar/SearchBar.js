@@ -4,7 +4,6 @@ import './SearchBar.css';
 
 
 const SearchBar = (props) => {
-   //  const videoSearch = props.searchText.length === 0 
 
     return (
         <div>
@@ -20,7 +19,6 @@ const SearchBar = (props) => {
                 placeholder='Search'></input>
             </form>
         </div>
-          {/*<CurrentVideo video={videoSearch}/>*/}
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import ListComments from '../comments/listComments/ListComments';
+import CreateComment from '../comments/createComment/CreateComment';
 import ActiveVideo from '../activeVideo/ActiveVideo';
 import './ViewActiveVideo.css';
 
