@@ -8,7 +8,6 @@ const ViewActiveVideo = (props) => {
    return (
       <div id='view-active-video'>
          <ActiveVideo currentVideo={props.currentVideo} />
-         <CreateComment />
          <ListComments />
       </div>
    )
