@@ -65,13 +65,8 @@ const App = () => {
 
    // get related video
    useEffect(() => {
-<<<<<<< HEAD
-      getRelatedVideos('E6HhI1uIKKs');
-   },[])
-=======
       getRelatedVideos(relatedVideoId);
    },[relatedVideoId])
->>>>>>> 3e304dc0778d0a5b7f9c6f0fd70610f93d86ebb0
 
 
    // handle search submit
