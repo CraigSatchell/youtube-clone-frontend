@@ -6,6 +6,12 @@
     margin-left: 15px;
 }
 
+
+#view-related-video iframe {
+   border: none;
+}
+
+
 #view-related-video h3:hover, #view-related-video:hover {
     cursor: pointer;
 }

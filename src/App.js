@@ -9,12 +9,15 @@ import Header from './components/header/Header';
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState(null);
    const [relatedVideos, setRelatedVideos] = useState(null);
+   const [comments, setComments] = useState(null);
+   const [replies, setReplies] = useState(null);
    const [relatedVideoId, setRelatedVideoId] = useState(null)
    const [newComment, setNewComment] = useState('');
    const [newReply, setNewReply] = useState('');
    const [likes, setLikes] = useState(0);
    const [dislikes, setDislikes] = useState(0);
    const [searchText, setSearchText] = useState('');
+   
 
 
 
@@ -102,7 +105,7 @@ const App = () => {
          <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
          <div className="main-view">
             <div className="left-column">
-               <ViewActiveVideo currentVideo={currentVideo} />
+               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} newReply={newReply} setNewReply={setNewReply} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies}/>
             </div>
             <div className="right-column">
                <ListRelatedVideos relatedVideos={relatedVideos} currentVideo = {currentVideo} setCurrentVideo = {setCurrentVideo} />
