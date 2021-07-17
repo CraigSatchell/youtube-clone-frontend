@@ -23,7 +23,7 @@ const App = () => {
 
       // fetch current video from YouTube API
    const getCurrentVideo = (searchText) => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => { setCurrentVideo(response.data.items[0]); setRelatedVideoId(response.data.items[0].id.videoId) }).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => { console.log(response.data.items); setCurrentVideo(response.data.items[0]); setRelatedVideoId(response.data.items[0].id.videoId) }).catch(err => console.log(err.message));
    }
 
 
