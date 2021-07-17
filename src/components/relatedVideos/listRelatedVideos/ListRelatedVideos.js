@@ -8,7 +8,7 @@ const ListRelatedVideos = (props) => {
          <ul>
             {props.relatedVideos ? props.relatedVideos.map((video) => {
                return (<li key={video.id.videoId}>
-                  <ViewRelatedVideo video={video} />
+                  <ViewRelatedVideo video={video} currentVideo={props.currentVideo} setCurrentVideo={props.setCurrentVideo} />
                </li>)
             }) : 'Loading . . .'}
          </ul>

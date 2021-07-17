@@ -71,7 +71,7 @@ const App = () => {
 
    // handle search submit
    const handleSearchSubmit = (event) => {
-      event.preventDefault()
+      event.preventDefault();
       getCurrentVideo(searchText);
       setSearchText('');   // clear search text values
    }
@@ -79,8 +79,20 @@ const App = () => {
 
    //handle search change
    const handleSearchChange = (event) => {
-      setSearchText(event.target.value)
-      console.log(searchText)
+      setSearchText(event.target.value);
+   }
+
+
+   // handle new comment submit
+   const handleNewCommentSubmit = (event) => {
+      event.preventDefault();
+   }
+
+
+   //handle new comment change
+   const handleNewCommentChange = (event) => {
+      setNewComment(event.target.value);
+      console.log(newComment);
    }
 
    console.log(relatedVideos);
@@ -93,7 +105,7 @@ const App = () => {
                <ViewActiveVideo currentVideo={currentVideo} />
             </div>
             <div className="right-column">
-               <ListRelatedVideos relatedVideos={relatedVideos} />
+               <ListRelatedVideos relatedVideos={relatedVideos} currentVideo = {currentVideo} setCurrentVideo = {setCurrentVideo} />
             </div>
          </div>
       </div>

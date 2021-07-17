@@ -3,19 +3,19 @@ import './CreateComment.css';
 
 const CreateComment = (props) => {
    return (
-      <div>
-      <div id="comment-bar">
-         <form onSubmit={
-            (event) => {
-               props.handleCommentSubmit(event)
-            }
-         }>
-         <input type ='text' name='Add Comment'
-            onChange={props.handleCommentChange}
-            value={props.newComment}
-            placeholder='Add Comment'></input>
-         </form>
-      </div>
+      <div id='create-comment'>
+         <div className="add-comment">
+            <form onSubmit={
+               (event) => {
+                  props.handleNewCommentSubmit(event)
+               }
+            }>
+               <input type='text' name='comment'
+                  onChange={props.handleNewCommentChange}
+                  value={props.newComment}
+                  placeholder='Add a public comment...'></input>
+            </form>
+         </div>
       </div>
    )
 }

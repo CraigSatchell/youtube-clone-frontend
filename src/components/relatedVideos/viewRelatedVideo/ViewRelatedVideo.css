@@ -1,0 +1,11 @@
+#view-related-video {
+    display: flex;
+}
+
+#view-related-video h3 {
+    margin-left: 15px;
+}
+
+#view-related-video h3:hover, #view-related-video:hover {
+    cursor: pointer;
+}

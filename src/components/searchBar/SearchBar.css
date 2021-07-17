@@ -1,13 +1,13 @@
 #search-bar {
     margin: auto;
-    padding: 5px;
+    padding: 10px;
     min-width: 300px;
     max-width: 550px;
     min-height: 50px;
 }
 
 #search-bar input[type='text'] {
-    margin-top: 10px;
+    margin: 10px;
     border-color: #999999;
     outline: none;
     border-radius: 3px;
