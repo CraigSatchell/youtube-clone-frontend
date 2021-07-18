@@ -8,8 +8,8 @@ import './LikeDislikeReplyComment.css';
 const LikeDislikeComment = (props) => {
    return (
       <div className='like-dislike-comment'>
-         <button onClick={props.handleLike}><ThumbUpAlt /></button>{props.comment.likes}
-         <button onClick={props.handleDislike}><ThumbDownAlt /></button>{props.comment.dislikes}
+         <button onClick={() => { props.handleLike(props.comment._id) }}><ThumbUpAlt /></button>{props.comment.likes}
+         <button onClick={() => { props.handleDislike(props.comment._id) }}><ThumbDownAlt /></button>{props.comment.dislikes}
          <button onClick={() => props.handleReplyCommentClick(props.comment._id)}>Reply</button>
          <div id={props.comment._id} className="hidden"><ReplyComment /></div>
       </div>

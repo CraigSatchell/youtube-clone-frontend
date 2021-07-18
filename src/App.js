@@ -55,6 +55,11 @@ const App = () => {
       return axios.post(`${apiPath}`, data).then((res) => (res.data)).catch((err) => console.log(err));
    }
 
+   // add new comment
+   const putCommentById = (commentId, data) => {
+      return axios.put(`${apiPath}/${commentId}`, data).then((res) => (res.data)).catch((err) => console.log(err));
+   }
+
    // get current YouTube video
    useEffect(() => {
       getCurrentVideo();
@@ -96,10 +101,10 @@ const App = () => {
    const handleNewCommentSubmit = (event) => {
       event.preventDefault();
       const comment = {
-         text: newComment,
+         text: 'not saved',
          likes: 0,
          dislikes: 0,
-         videoId: currentVideo.id.videoId,
+         videoId: 'not saved',
          replies: []
       }
       postNewComment(comment);
@@ -136,16 +141,22 @@ const App = () => {
       setCurrentVideoId(video.id.videoId)
    }
 
-   const handleLike = () => {
-      alert('like');
+   const handleLike = (commentId) => {
+      const selComment = comments.find((comment) => comment._id === commentId);
+      const data = {
+         likes: likes + 1,
+         dislikes: selComment.dislikes,
+      }
+      putCommentById(commentId, data)
+      console.log('selComment: ', selComment);
+      console.log('data')
    }
 
-   const handleDislike = () => {
-      alert('dislike');
+   const handleDislike = (commentId) => {
+      const selComment = comments.find((comment) => comment._id === commentId);
+      console.log('selComment: ', selComment);
    }
 
-
-   //console.log(relatedVideos);
 
    return (
       <div id='app'>
