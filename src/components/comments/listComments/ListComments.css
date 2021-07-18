@@ -1,16 +1,16 @@
-#list-comments {
+.list-comments {
     margin-top: 25px;
     min-height: 200px;
    color:#333333;
 
 }
 
-#list-comments h2 {
+.list-comments h2 {
    font-weight: normal;
    color: #999999;
 }
 
-#list-comments li {
+.list-comments li {
    margin-bottom: 5px;
    list-style: none;
 }

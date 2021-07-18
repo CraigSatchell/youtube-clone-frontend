@@ -1,5 +1,5 @@
 
-#create-comment input[type='text'] {
+.create-comment input[type='text'] {
     margin: 20px 0;
     background-color:inherit;
     border: none;

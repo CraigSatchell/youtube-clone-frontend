@@ -1,4 +1,4 @@
-#active-video {
+.active-video {
    min-height: 550px;
    max-height: 625px;
    margin-bottom: 20px;
@@ -8,17 +8,17 @@
    overflow: hidden;
 }
 
-#active-video h2 {
+.active-video h2 {
    margin-top: 10px;
    color: #666666;
 }
 
-#active-video p {
+.active-video p {
    margin-top: 10px;
    
 }
 
-#active-video iframe {
+.active-video iframe {
    border: none;
 }
 

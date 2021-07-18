@@ -3,7 +3,7 @@ import './ViewComment.css';
 
 const ViewComment = () => {
     return (
-        <div>
+        <div className='view-comment'>
             
         </div>
     )

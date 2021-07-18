@@ -4,11 +4,11 @@ import './LikeDislikeReplyComment.css';
 
 const LikeDislikeComment = (props) => {
     return (
-        <div id='like-dislike-comment'>
+        <div className='like-dislike-comment'>
           <button>Like</button>
           <button>Dislike</button>
-          <button onClick={()=>props.handleReplyCommentClick(props.comment)}>Reply</button>
-          <div id="replyComment" className="hidden"><ReplyComment /></div>
+          <button onClick={()=>props.handleReplyCommentClick(props.comment._id)}>Reply</button>
+          <div id={props.comment._id} className="hidden"><ReplyComment /></div>
         </div>
     )
 }

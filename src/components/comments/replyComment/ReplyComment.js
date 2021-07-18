@@ -3,7 +3,7 @@ import './ReplyComment.css';
 
 const ReplyComment = () => {
     return (
-        <div>
+        <div className='reply-comment'>
             <p>Enter your reply here!</p>
         </div>
     )

@@ -12,7 +12,7 @@ const ListComments = (props) => {
    }
 
    return (
-      <div id='list-comments'>
+      <div className='list-comments'>
          <h2>{props.commentCount} Comments</h2>
          <CreateComment newComment={props.newComment} setNewComment={props.setNewComment} handleNewCommentChange={props.handleNewCommentChange} handleNewCommentSubmit={props.handleNewCommentSubmit} />
          <div>

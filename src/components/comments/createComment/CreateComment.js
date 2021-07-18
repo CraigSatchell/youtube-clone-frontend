@@ -6,7 +6,7 @@ const CreateComment = (props) => {
 
 
    return (
-      <div id='create-comment'>
+      <div className='create-comment'>
          <div className="add-comment">
             <form onSubmit={
                (event) => {
