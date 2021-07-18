@@ -101,10 +101,10 @@ const App = () => {
    const handleNewCommentSubmit = (event) => {
       event.preventDefault();
       const comment = {
-         text: 'not saved',
+         text: newComment,
          likes: 0,
          dislikes: 0,
-         videoId: 'not saved',
+         videoId: currentVideoId,
          replies: []
       }
       postNewComment(comment);
@@ -144,12 +144,15 @@ const App = () => {
    const handleLike = (commentId) => {
       const selComment = comments.find((comment) => comment._id === commentId);
       const data = {
-         likes: likes + 1,
+         text: selComment.text,
+         likes: selComment.likes + 1,
          dislikes: selComment.dislikes,
+         videoId: selComment.videoId,
       }
-      putCommentById(commentId, data)
+      putCommentById(commentId, data);
       console.log('selComment: ', selComment);
-      console.log('data')
+      console.log('data', data);
+      getCommentsByVideoId(selComment.videoId);
    }
 
    const handleDislike = (commentId) => {
