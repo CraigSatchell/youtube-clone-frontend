@@ -1,10 +1,21 @@
 import React from 'react';
 import './ReplyComment.css';
 
-const ReplyComment = () => {
+const ReplyComment = (props) => {
     return (
         <div className='reply-comment'>
-            <p>Enter your reply here!</p>
+         <div className="add-comment">
+            <form onSubmit={
+               (event) => {
+                  props.handleNewReplySubmit(event)
+               }
+            }>
+               <input type='text' name='comment'
+                  onChange={props.handleNewReplyChange}
+                  value={props.newReply}
+                  placeholder='Add a public comment...'></input>
+            </form>
+         </div>
         </div>
     )
 }

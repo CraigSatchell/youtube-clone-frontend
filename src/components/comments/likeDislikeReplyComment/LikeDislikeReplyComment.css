@@ -8,11 +8,15 @@
     padding: 10px 5px 0 5px;
     margin: 0 0 0 10px;
     font-size: 0.9em;
-    color: #000000;
+    color: #999999;
     text-transform: uppercase;
     font-weight: bold;
 }
 
 .like-dislike-comment button:hover {
     cursor: pointer;
+}
+
+.like-dislike-comment button span {
+   color: #000000;
 }

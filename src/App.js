@@ -9,6 +9,7 @@ import Header from './components/header/Header';
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState(null);
    const [currentVideoId, setCurrentVideoId] = useState(null);
+   const [currentComment, setCurrentComment] = useState(null);
    const [relatedVideos, setRelatedVideos] = useState(null);
    const [comments, setComments] = useState(null);
    const [replies, setReplies] = useState(null);
@@ -19,9 +20,6 @@ const App = () => {
    const [dislikes, setDislikes] = useState(0);
    const [searchText, setSearchText] = useState('');
    const [commentCount, setCommentCount] = useState(0);
-
-
-
 
 
    const apiPath = 'http://localhost:5000/api/comments';
@@ -63,6 +61,7 @@ const App = () => {
    // get current YouTube video
    useEffect(() => {
       getCurrentVideo();
+      console.log('getCurrentVideo');
    }, [])
 
 
@@ -75,12 +74,13 @@ const App = () => {
    // get video comments by video id
    useEffect(() => {
       getCommentsByVideoId(currentVideoId);
-   }, [currentVideoId, comments]);
+      console.log('getCommentsByVideoId');
+   }, [currentVideoId, currentComment]);
 
 
    // get related video
    useEffect(() => {
-      getRelatedVideos(relatedVideoId);
+      getRelatedVideos(relatedVideoId); console.log('getRelatedVideos');
    }, [relatedVideoId])
 
 
@@ -119,16 +119,25 @@ const App = () => {
    }
 
 
-   const handleNewReplySubmit = (event) => {
+   const handleNewReplySubmit = (index, event) => {
       event.preventDefault();
-      //alert('submit comment: ' + newComment)
+      const comment = {
+         text: newReply,
+         likes: 0,
+         dislikes: 0,
+         videoId: currentVideoId,
+         replies: []
+      }
+      //postNewReply(comment);
+      //comments[index].replies.push(comment);
+      setNewReply('');
    }
 
 
    //handle new reply change
    const handleNewReplyChange = (event) => {
-      setNewComment(event.target.value);
-      console.log(newComment);
+      setNewReply(event.target.value);
+      console.log(newReply);
    }
 
    const handleReplyCommentClick = () => {
@@ -150,6 +159,7 @@ const App = () => {
          videoId: selectedComment.videoId,
       }
       putCommentById(commentId, data);
+      setCurrentComment(comments[index]);
    }
 
    const handleDislike = (commentId, index) => {
@@ -161,6 +171,7 @@ const App = () => {
          videoId: selectedComment.videoId,
       }
       putCommentById(commentId, data);
+
    }
 
    return (
@@ -168,7 +179,7 @@ const App = () => {
          <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
          <div className="main-view">
             <div className="left-column">
-               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} />
+               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} currentComment={currentComment} setCurrentComment={setCurrentComment} />
             </div>
             <div className="right-column">
                <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} handleRelatedClick={handleRelatedClick} />

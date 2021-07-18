@@ -10,7 +10,7 @@ const LikeDislikeComment = (props) => {
       <div className='like-dislike-comment'>
          <button onClick={() => { props.handleLike(props.comments[props.index]._id, props.index) }}><ThumbUpAlt /></button>{props.comments[props.index].likes}
          <button onClick={() => { props.handleDislike(props.comments[props.index]._id, props.index) }}><ThumbDownAlt /></button>{props.comments[props.index].dislikes}
-         <button onClick={() => props.handleReplyCommentClick(props.comments[props.index]._id)}>Reply</button>
+         <button onClick={() => props.handleReplyCommentClick(props.comments[props.index]._id)}><span>Reply</span></button>
          <div id={props.comments[props.index]._id} className="hidden"><ReplyComment /></div>
       </div>
    )
