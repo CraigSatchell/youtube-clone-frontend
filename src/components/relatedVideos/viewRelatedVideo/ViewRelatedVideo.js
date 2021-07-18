@@ -2,14 +2,8 @@ import React from 'react';
 import './ViewRelatedVideo.css';
 
 const ViewRelatedVideo = (props) => {
-
-   const handleOnClick = (video) => {
-      props.setCurrentVideo(video);
-   }
-
-   console.log('related:', props.video)
    return (
-      <div id='view-related-video' onClick={() => { handleOnClick(props.video) }}>
+      <div id='view-related-video' onClick={() => { props.handleRelatedClick(props.video) }}>
          <div>
             <iframe id="ytplayer" title='currentvideo' width="250" height="100%" src={`https://www.youtube.com/embed/${props.video.id.videoId}`} ></iframe>
          </div>
