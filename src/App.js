@@ -18,7 +18,6 @@ const App = () => {
    const [likes, setLikes] = useState(0);
    const [dislikes, setDislikes] = useState(0);
    const [searchText, setSearchText] = useState('');
-   const [showReplyComment, setShowReplyComment] = useState(false);
    const [commentCount, setCommentCount] = useState(0);
 
 
@@ -70,8 +69,8 @@ const App = () => {
 
    // get video comments by video id
    useEffect(() => {
-      getCommentsByVideoId('jbnddQ9l0IA');
-   }, []);
+      getCommentsByVideoId(currentVideoId);
+   }, [currentVideoId]);
 
 
    // get related video
