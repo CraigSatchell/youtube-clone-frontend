@@ -165,7 +165,6 @@ const App = () => {
       const newComments = [...comments];
       newComments[index] = data;
       setComments(newComments);
-      console.log('comments: ', comments);
    }
 
 
@@ -182,8 +181,6 @@ const handleDislike = (commentId, index) => {
    const newComments = [...comments];
    newComments[index] = data;
    setComments(newComments);
-   console.log('comments: ', comments);
-
 }
 
 return (
