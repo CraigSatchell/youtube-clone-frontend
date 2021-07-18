@@ -47,6 +47,10 @@ const App = () => {
       axios.get(`${apiPath}/${videoId}`).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
    }
 
+   // add new comment
+   const postNewComment = (data) => {
+      return axios.post(`${apiPath}`, data).then((res) => (res.data)).catch((err) => console.log(err));
+   }
 
    // get current YouTube video
    useEffect(() => {
@@ -86,18 +90,38 @@ const App = () => {
    }
 
 
-   // handle new comment submit
    const handleNewCommentSubmit = (event) => {
       event.preventDefault();
+      const comment = {
+         text: newComment,
+         likes: 0,
+         dislikes: 0,
+         videoId: currentVideo.id.videoId,
+         replies: []
+      }
+      postNewComment(comment);
+      setNewComment('');
    }
-
-
+   
+   
    //handle new comment change
-   const handleNewCommentChange = (event) => {
+      const handleNewCommentChange = (event) => {
+      setNewComment(event.target.value);
+   }
+   
+
+   const handleNewReplySubmit = (event) => {
+      event.preventDefault();
+      //alert('submit comment: ' + newComment)
+   }
+   
+   
+   //handle new reply change
+      const handleNewReplyChange = (event) => {
       setNewComment(event.target.value);
       console.log(newComment);
    }
-
+   
    console.log(relatedVideos);
 
    return (
@@ -105,7 +129,7 @@ const App = () => {
          <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
          <div className="main-view">
             <div className="left-column">
-               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} newReply={newReply} setNewReply={setNewReply} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies}/>
+               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislike={setDislikes} />
             </div>
             <div className="right-column">
                <ListRelatedVideos relatedVideos={relatedVideos} currentVideo = {currentVideo} setCurrentVideo = {setCurrentVideo} />

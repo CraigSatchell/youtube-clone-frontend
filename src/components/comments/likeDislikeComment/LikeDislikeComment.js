@@ -1,10 +1,11 @@
 import React from 'react';
 import './LikeDislikeComment.css';
 
-const LikeDislikeComment = () => {
+const LikeDislikeComment = (props) => {
     return (
-        <div>
-            
+        <div id='like-dislike-comment'>
+          <button>Like</button>
+          <button>Dislike</button>
         </div>
     )
 }

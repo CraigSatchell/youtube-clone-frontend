@@ -5,8 +5,10 @@ import ReplyComment from '../replyComment/ReplyComment';
 import LikeDislikeComment from '../likeDislikeComment/LikeDislikeComment';
 
 
+
 const ListComments = (props) => {
    const [commentCount, setCommentCount] = useState(0)
+   const [showReplyComment, setShowReplyComment] = useState(false);
 
    // newComment={newComment} setNewComment={setNewComment} newReply={newReply} setNewReply={setNewReply} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies}
 
@@ -17,9 +19,9 @@ const ListComments = (props) => {
    return (
       <div id='list-comments'>
          <h2>{commentCount} Comments</h2>
-         <CreateComment newComment={props.newComment} setNewComment={props.setNewComment} />
+         <CreateComment newComment={props.newComment} setNewComment={props.setNewComment} handleNewCommentChange={props.handleNewCommentChange} handleNewCommentSubmit={props.handleNewCommentSubmit} />
          {props.comments ? props.comments.map((comment) => {
-            return (<li>{comment.text}<div>[Like] [Dislike] [Reply]</div></li>)
+            return (<li>{comment.text}<div><LikeDislikeComment />&nbsp;<button>Reply</button></div><ReplyComment /></li>)
          }) : ''}
       </div>
    )

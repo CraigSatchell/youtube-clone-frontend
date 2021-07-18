@@ -2,6 +2,9 @@ import React from 'react';
 import './CreateComment.css';
 
 const CreateComment = (props) => {
+// handle new comment submit
+
+
    return (
       <div id='create-comment'>
          <div className="add-comment">
