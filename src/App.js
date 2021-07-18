@@ -39,10 +39,10 @@ const App = () => {
    }
 
 
-   // fetch all video comments
-   const getAllComments = () => {
-      axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
-   }
+   // // fetch all video comments
+   // const getAllComments = () => {
+   //    axios.get(apiPath).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
+   // }
 
 
    // fetch video comment by video id
@@ -75,7 +75,7 @@ const App = () => {
    // get video comments by video id
    useEffect(() => {
       getCommentsByVideoId(currentVideoId);
-   }, [currentVideoId]);
+   }, [currentVideoId, comments]);
 
 
    // get related video
@@ -141,25 +141,27 @@ const App = () => {
       setCurrentVideoId(video.id.videoId)
    }
 
-   const handleLike = (commentId) => {
-      const selComment = comments.find((comment) => comment._id === commentId);
+   const handleLike = (commentId, index) => {
+      const selectedComment = comments[index];
       const data = {
-         text: selComment.text,
-         likes: selComment.likes + 1,
-         dislikes: selComment.dislikes,
-         videoId: selComment.videoId,
+         text: selectedComment.text,
+         likes: selectedComment.likes + 1,
+         dislikes: selectedComment.dislikes,
+         videoId: selectedComment.videoId,
       }
       putCommentById(commentId, data);
-      console.log('selComment: ', selComment);
-      console.log('data', data);
-      getCommentsByVideoId(selComment.videoId);
    }
 
-   const handleDislike = (commentId) => {
-      const selComment = comments.find((comment) => comment._id === commentId);
-      console.log('selComment: ', selComment);
+   const handleDislike = (commentId, index) => {
+      const selectedComment = comments[index];
+      const data = {
+         text: selectedComment.text,
+         likes: selectedComment.likes,
+         dislikes: selectedComment.dislikes + 1,
+         videoId: selectedComment.videoId,
+      }
+      putCommentById(commentId, data);
    }
-
 
    return (
       <div id='app'>

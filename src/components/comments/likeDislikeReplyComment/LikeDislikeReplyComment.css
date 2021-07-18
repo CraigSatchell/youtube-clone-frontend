@@ -1,19 +1,18 @@
 .like-dislike-comment {
-
+    border: none;
 }
 
 .like-dislike-comment button {
-border: none;
-background-color: inherit;
-padding: 10px 5px 0 5px;
-margin: 0 0 0 10px;
-font-size: .9em;
-color: #000000;
-text-transform: uppercase;
-font-weight: bold;
-
+    border: none;
+    background-color: inherit;
+    padding: 10px 5px 0 5px;
+    margin: 0 0 0 10px;
+    font-size: 0.9em;
+    color: #000000;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .like-dislike-comment button:hover {
-   cursor: pointer;
+    cursor: pointer;
 }
