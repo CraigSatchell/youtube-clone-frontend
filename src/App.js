@@ -64,6 +64,9 @@ const App = () => {
       console.log('getCurrentVideo');
    }, [])
 
+   useEffect(() => {
+
+   }, [])
 
    // // get video comments
    // useEffect(() => {
@@ -75,7 +78,7 @@ const App = () => {
    useEffect(() => {
       getCommentsByVideoId(currentVideoId);
       console.log('getCommentsByVideoId');
-   }, [currentVideoId, currentComment]);
+   }, [currentVideoId]);
 
 
    // get related video
@@ -159,34 +162,43 @@ const App = () => {
          videoId: selectedComment.videoId,
       }
       putCommentById(commentId, data);
-      setCurrentComment(comments[index]);
+      const newComments = [...comments];
+      newComments[index] = data;
+      setComments(newComments);
+      console.log('comments: ', comments);
    }
 
-   const handleDislike = (commentId, index) => {
-      const selectedComment = comments[index];
-      const data = {
-         text: selectedComment.text,
-         likes: selectedComment.likes,
-         dislikes: selectedComment.dislikes + 1,
-         videoId: selectedComment.videoId,
-      }
-      putCommentById(commentId, data);
 
+
+const handleDislike = (commentId, index) => {
+   const selectedComment = comments[index];
+   const data = {
+      text: selectedComment.text,
+      likes: selectedComment.likes,
+      dislikes: selectedComment.dislikes + 1,
+      videoId: selectedComment.videoId,
    }
+   putCommentById(commentId, data);
+   const newComments = [...comments];
+   newComments[index] = data;
+   setComments(newComments);
+   console.log('comments: ', comments);
 
-   return (
-      <div id='app'>
-         <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
-         <div className="main-view">
-            <div className="left-column">
-               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} currentComment={currentComment} setCurrentComment={setCurrentComment} />
-            </div>
-            <div className="right-column">
-               <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} handleRelatedClick={handleRelatedClick} />
-            </div>
+}
+
+return (
+   <div id='app'>
+      <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
+      <div className="main-view">
+         <div className="left-column">
+            <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} currentComment={currentComment} setCurrentComment={setCurrentComment} />
+         </div>
+         <div className="right-column">
+            <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} handleRelatedClick={handleRelatedClick} />
          </div>
       </div>
-   )
+   </div>
+)
 }
 
 export default App
