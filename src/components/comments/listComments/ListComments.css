@@ -9,3 +9,8 @@
    font-weight: normal;
    color: #999999;
 }
+
+#list-comments li {
+   margin-bottom: 15px;
+   list-style: none;
+}

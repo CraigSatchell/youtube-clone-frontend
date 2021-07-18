@@ -2,27 +2,25 @@ import React, { useState } from 'react';
 import './ListComments.css';
 import CreateComment from '../createComment/CreateComment';
 import ReplyComment from '../replyComment/ReplyComment';
-import LikeDislikeComment from '../likeDislikeComment/LikeDislikeComment';
+import LikeDislikeComment from '../likeDislikeReplyComment/LikeDislikeReplyComment';
 
 
 
 const ListComments = (props) => {
-   const [commentCount, setCommentCount] = useState(0)
-   const [showReplyComment, setShowReplyComment] = useState(false);
 
-   // newComment={newComment} setNewComment={setNewComment} newReply={newReply} setNewReply={setNewReply} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies}
-
-   // const listComments = props.comments.map((comment) => {
-   //    return (<li>{comment.text}</li>)
-   // })
+   if (props.comments) {
+      //setCommentCount(props.comments.length)
+   }
 
    return (
       <div id='list-comments'>
-         <h2>{commentCount} Comments</h2>
+         <h2>{props.commentCount} Comments</h2>
          <CreateComment newComment={props.newComment} setNewComment={props.setNewComment} handleNewCommentChange={props.handleNewCommentChange} handleNewCommentSubmit={props.handleNewCommentSubmit} />
-         {props.comments ? props.comments.map((comment) => {
-            return (<li>{comment.text}<div><LikeDislikeComment />&nbsp;<button>Reply</button></div><ReplyComment /></li>)
-         }) : ''}
+         <div>
+            {props.comments ? props.comments.map((comment) => {
+               return (<li key={comment._id}>{comment.text}<div><LikeDislikeComment />&nbsp;<button onClick={props.handleReplyCommentClick} >Reply</button></div><ReplyComment /></li>)
+            }) : ''}
+         </div>
       </div>
    )
 }

@@ -1,6 +1,6 @@
 
 #create-comment input[type='text'] {
-    margin-top: 10px;
+    margin: 20px 0;
     background-color:inherit;
     border: none;
     border-bottom: 1px solid #cccccc;

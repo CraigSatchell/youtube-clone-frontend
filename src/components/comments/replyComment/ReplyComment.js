@@ -4,7 +4,7 @@ import './ReplyComment.css';
 const ReplyComment = () => {
     return (
         <div>
-            
+            <p>Enter your reply here!</p>
         </div>
     )
 }

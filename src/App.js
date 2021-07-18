@@ -8,6 +8,7 @@ import Header from './components/header/Header';
 
 const App = () => {
    const [currentVideo, setCurrentVideo] = useState(null);
+   const [currentVideoId, setCurrentVideoId] = useState(null);
    const [relatedVideos, setRelatedVideos] = useState(null);
    const [comments, setComments] = useState(null);
    const [replies, setReplies] = useState(null);
@@ -17,16 +18,19 @@ const App = () => {
    const [likes, setLikes] = useState(0);
    const [dislikes, setDislikes] = useState(0);
    const [searchText, setSearchText] = useState('');
-   
+   const [showReplyComment, setShowReplyComment] = useState(false);
+   const [commentCount, setCommentCount] = useState(0);
+
+
 
 
 
    const apiPath = 'http://localhost:5000/api/comments';
 
 
-      // fetch current video from YouTube API
+   // fetch current video from YouTube API
    const getCurrentVideo = (searchText) => {
-      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=10&part=snippet&type=video`).then(response => { console.log(response.data.items); setCurrentVideo(response.data.items[0]); setRelatedVideoId(response.data.items[0].id.videoId) }).catch(err => console.log(err.message));
+      axios.get(`https://www.googleapis.com/youtube/v3/search?q=${searchText}&key=${apiKey}&maxResults=1&part=snippet&type=video`).then(response => { console.log(response.data.items); setCurrentVideo(response.data.items[0]); setCurrentVideoId(response.data.items[0].id.videoId); setRelatedVideoId(response.data.items[0].id.videoId) }).catch(err => console.log(err.message));
    }
 
 
@@ -44,7 +48,7 @@ const App = () => {
 
    // fetch video comment by video id
    const getCommentsByVideoId = (videoId) => {
-      axios.get(`${apiPath}/${videoId}`).then((res) => { console.log(res.data); }).catch((err) => console.log(err));
+      axios.get(`${apiPath}/${videoId}`).then((res) => { setComments(res.data) }).catch((err) => console.log(err));
    }
 
    // add new comment
@@ -58,22 +62,22 @@ const App = () => {
    }, [])
 
 
-   // get video comments
-   useEffect(() => {
-      getAllComments();
-   }, []);
+   // // get video comments
+   // useEffect(() => {
+   //    getAllComments();
+   // }, []);
 
 
    // get video comments by video id
    useEffect(() => {
-      getCommentsByVideoId('1111');
+      getCommentsByVideoId('jbnddQ9l0IA');
    }, []);
 
 
    // get related video
    useEffect(() => {
       getRelatedVideos(relatedVideoId);
-   },[relatedVideoId])
+   }, [relatedVideoId])
 
 
    // handle search submit
@@ -102,37 +106,41 @@ const App = () => {
       postNewComment(comment);
       setNewComment('');
    }
-   
-   
+
+
    //handle new comment change
-      const handleNewCommentChange = (event) => {
+   const handleNewCommentChange = (event) => {
       setNewComment(event.target.value);
    }
-   
+
 
    const handleNewReplySubmit = (event) => {
       event.preventDefault();
       //alert('submit comment: ' + newComment)
    }
-   
-   
+
+
    //handle new reply change
-      const handleNewReplyChange = (event) => {
+   const handleNewReplyChange = (event) => {
       setNewComment(event.target.value);
       console.log(newComment);
    }
-   
-   console.log(relatedVideos);
+
+   const handleReplyCommentClick = () => {
+      alert('reply comment click')
+   }
+
+   //console.log(relatedVideos);
 
    return (
       <div id='app'>
          <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
          <div className="main-view">
             <div className="left-column">
-               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislike={setDislikes} />
+               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislike={setDislikes} commentCount={commentCount}  handleReplyCommentClick={handleReplyCommentClick} />
             </div>
             <div className="right-column">
-               <ListRelatedVideos relatedVideos={relatedVideos} currentVideo = {currentVideo} setCurrentVideo = {setCurrentVideo} />
+               <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} />
             </div>
          </div>
       </div>
