@@ -64,10 +64,7 @@ const App = () => {
       console.log('getCurrentVideo');
    }, [])
 
-   useEffect(() => {
-
-   }, [])
-
+   
    // // get video comments
    // useEffect(() => {
    //    getAllComments();

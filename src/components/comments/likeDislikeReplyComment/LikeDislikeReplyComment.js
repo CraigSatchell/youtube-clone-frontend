@@ -13,7 +13,7 @@ const LikeDislikeComment = (props) => {
          <button onClick={() => { props.handleDislike(props.comments[props.index]._id, props.index) }}><ThumbDownAlt /></button>{props.comments[props.index].dislikes}
          <button onClick={() => props.handleReplyCommentClick(props.comments[props.index]._id)}><span>Reply</span></button>
          <div id={props.comments[props.index]._id} className="hidden"><ReplyComment /></div>
-         <ListReplies />
+         {props.comments ? <ListReplies comments={props.comments} commentIndex={props.index} /> : ''}
       </div>
    )
 }

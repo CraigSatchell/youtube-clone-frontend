@@ -1,15 +1,18 @@
 import React from 'react';
 import './ListReplies.css';
-import ReplyComment from '../replyComment/ReplyComment';
 
 const ListReplies = (props) => {
 
+   // const com = props.comments.replies.map((reply, index) => {
+   //    return <li key={reply._id}>reply.text</li>
+   // })
+   console.log("comments list replies: ", props.comments);
    return (
       <div className='list-replies'>
          <ul>
-            <li>reply 1</li>
-            <li>reply 2</li>
-            <li>reply 3</li>
+            {props.comments[0].replies.map((reply, index) => {
+               return <li key={reply._id}>reply.text</li>
+            })}
          </ul>
       </div>
    )
