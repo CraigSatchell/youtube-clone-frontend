@@ -1,0 +1,8 @@
+.list-replies {
+   margin: 5px 0 20px 15px;
+}
+
+.list-replies li {
+   list-style: none;
+   line-height: 1.2em;
+}

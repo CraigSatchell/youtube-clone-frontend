@@ -1,5 +1,6 @@
 import React from 'react';
 import ReplyComment from '../replyComment/ReplyComment';
+import ListReplies from '../listReplies/ListReplies';
 import { ThumbDownAlt } from '@material-ui/icons';
 import { ThumbUpAlt } from '@material-ui/icons';
 import {  } from '@material-ui/icons';
@@ -12,6 +13,7 @@ const LikeDislikeComment = (props) => {
          <button onClick={() => { props.handleDislike(props.comments[props.index]._id, props.index) }}><ThumbDownAlt /></button>{props.comments[props.index].dislikes}
          <button onClick={() => props.handleReplyCommentClick(props.comments[props.index]._id)}><span>Reply</span></button>
          <div id={props.comments[props.index]._id} className="hidden"><ReplyComment /></div>
+         <ListReplies />
       </div>
    )
 }
