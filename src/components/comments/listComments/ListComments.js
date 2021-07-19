@@ -4,7 +4,6 @@ import CreateComment from '../createComment/CreateComment';
 import LikeDislikeReplyComment from '../likeDislikeReplyComment/LikeDislikeReplyComment';
 
 
-
 const ListComments = (props) => {
    return (
       <div className='list-comments'>

@@ -13,7 +13,7 @@ const ReplyComment = (props) => {
                <input type='text' name='comment'
                   onChange={props.handleNewReplyChange}
                   value={props.newReply}
-                  placeholder='Add a public comment...'></input>
+                  placeholder='Add a public reply...'></input>
             </form>
          </div>
         </div>

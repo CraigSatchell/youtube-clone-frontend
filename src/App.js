@@ -143,10 +143,10 @@ const App = () => {
       console.log(newReply);
    }
 
-   const handleReplyCommentClick = () => {
+   const handleReplyCommentClick = (commentId) => {
       alert('reply comment click')
+      document.getElementById(commentId).classList.remove('hidden');
    }
-
 
    const handleRelatedClick = (video) => {
       setCurrentVideo(video);

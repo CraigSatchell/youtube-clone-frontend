@@ -17,7 +17,7 @@
     min-width: 600px;
     max-width: 100%;
     padding: 50px 10px;
-    flex-basis:70%;
+    flex-basis:60%;
 }
 
 #app .right-column {
