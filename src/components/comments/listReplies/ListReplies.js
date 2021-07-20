@@ -12,7 +12,7 @@ const ListReplies = (props) => {
       <div className='list-replies'>
          <ul>
             {props.comments[props.commentIndex].replies.map((reply, index) => {
-               return (<li key={reply._id}>reply.text</li>)
+               return (<li key={reply._id}>{reply.text}</li>)
             })}
          </ul>
       </div>

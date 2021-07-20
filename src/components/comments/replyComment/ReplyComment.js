@@ -7,7 +7,7 @@ const ReplyComment = (props) => {
          <div className="add-comment">
             <form onSubmit={
                (event) => {
-                  props.handleNewReplySubmit(event) 
+                  props.myHandle(event) 
                }
             }>
                <input type='text' name='reply'
