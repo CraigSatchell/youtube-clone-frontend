@@ -53,6 +53,11 @@ const App = () => {
       return axios.post(`${apiPath}`, data).then((res) => (res.data)).catch((err) => console.log(err));
    }
 
+   // add new reply
+   const postNewReply = (commentId, data) => {
+      return axios.post(`${apiPath}/${commentId}`, data).then((res) => (res.data)).catch((err) => console.log(err));
+   }
+
    // add new comment
    const putCommentById = (commentId, data) => {
       return axios.put(`${apiPath}/${commentId}`, data).then((res) => (res.data)).catch((err) => console.log(err));
@@ -64,7 +69,7 @@ const App = () => {
       console.log('getCurrentVideo');
    }, [])
 
-   
+
    // // get video comments
    // useEffect(() => {
    //    getAllComments();
@@ -119,17 +124,15 @@ const App = () => {
    }
 
 
-   const handleNewReplySubmit = (index, event) => {
+   const handleNewReplySubmit = (commentId, commentIndex, event) => {
       event.preventDefault();
       const comment = {
-         text: newReply,
-         likes: 0,
-         dislikes: 0,
-         videoId: currentVideoId,
-         replies: []
+         text: newReply
       }
-      //postNewReply(comment);
-      //comments[index].replies.push(comment);
+      console.log('reply comment: ', comment);
+      console.log('reply commentId,commentIndex', commentId, commentIndex);
+      // postNewReply(commentId, comment);
+      // comments[commentIndex].replies.push(comment);
       setNewReply('');
    }
 
@@ -166,33 +169,33 @@ const App = () => {
 
 
 
-const handleDislike = (commentId, index) => {
-   const selectedComment = comments[index];
-   const data = {
-      text: selectedComment.text,
-      likes: selectedComment.likes,
-      dislikes: selectedComment.dislikes + 1,
-      videoId: selectedComment.videoId,
+   const handleDislike = (commentId, index) => {
+      const selectedComment = comments[index];
+      const data = {
+         text: selectedComment.text,
+         likes: selectedComment.likes,
+         dislikes: selectedComment.dislikes + 1,
+         videoId: selectedComment.videoId,
+      }
+      putCommentById(commentId, data);
+      const newComments = [...comments];
+      newComments[index] = data;
+      setComments(newComments);
    }
-   putCommentById(commentId, data);
-   const newComments = [...comments];
-   newComments[index] = data;
-   setComments(newComments);
-}
 
-return (
-   <div id='app'>
-      <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
-      <div className="main-view">
-         <div className="left-column">
-            <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} currentComment={currentComment} setCurrentComment={setCurrentComment} />
-         </div>
-         <div className="right-column">
-            <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} handleRelatedClick={handleRelatedClick} />
+   return (
+      <div id='app'>
+         <Header handleSearchChange={handleSearchChange} setSearchText={setSearchText} searchText={searchText} handleSearchSubmit={handleSearchSubmit} />
+         <div className="main-view">
+            <div className="left-column">
+               <ViewActiveVideo currentVideo={currentVideo} newComment={newComment} setNewComment={setNewComment} handleNewCommentChange={handleNewCommentChange} handleNewCommentSubmit={handleNewCommentSubmit} newReply={newReply} setNewReply={setNewReply} handleNewReplyChange={handleNewReplyChange} handleNewReplySubmit={handleNewReplySubmit} comments={comments} setComments={setComments} replies={replies} setReplies={setReplies} likes={likes} setLikes={setLikes} dislikes={dislikes} setDislikes={setDislikes} commentCount={commentCount} handleReplyCommentClick={handleReplyCommentClick} handleLike={handleLike} handleDislike={handleDislike} currentComment={currentComment} setCurrentComment={setCurrentComment}  />
+            </div>
+            <div className="right-column">
+               <ListRelatedVideos relatedVideos={relatedVideos} currentVideo={currentVideo} setCurrentVideo={setCurrentVideo} currentVideoId={currentVideoId} setCurrentVideoId={setCurrentVideoId} handleRelatedClick={handleRelatedClick} />
+            </div>
          </div>
       </div>
-   </div>
-)
+   )
 }
 
 export default App
