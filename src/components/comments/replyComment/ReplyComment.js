@@ -7,10 +7,10 @@ const ReplyComment = (props) => {
          <div className="add-comment">
             <form onSubmit={
                (event) => {
-                  props.handleNewReplySubmit(props.comment._id, props.commentIndex, event) 
+                  props.handleNewReplySubmit(event) 
                }
             }>
-               <input type='text' name='comment'
+               <input type='text' name='reply'
                   onChange={props.handleNewReplyChange}
                   value={props.newReply}
                   placeholder='Add a public reply...'></input>

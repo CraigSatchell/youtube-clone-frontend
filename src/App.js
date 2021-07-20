@@ -141,11 +141,10 @@ const App = () => {
    //handle new reply change
    const handleNewReplyChange = (event) => {
       setNewReply(event.target.value);
-      console.log(newReply);
+      console.log("reply change:", event.target.value);
    }
 
    const handleReplyCommentClick = (commentId) => {
-      alert('reply comment click')
       document.getElementById(commentId).classList.remove('hidden');
    }
 
