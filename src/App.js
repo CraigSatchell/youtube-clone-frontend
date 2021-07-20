@@ -126,11 +126,12 @@ const App = () => {
 
    const handleNewReplySubmit = (commentId, commentIndex, event) => {
       event.preventDefault();
+      alert('handle reply submit');
       const comment = {
          text: newReply
       }
       console.log('reply comment: ', comment);
-      console.log('reply commentId,commentIndex', commentId, commentIndex);
+      console.log('reply commentId, commentIndex', commentId, commentIndex);
       // postNewReply(commentId, comment);
       // comments[commentIndex].replies.push(comment);
       setNewReply('');
@@ -166,7 +167,6 @@ const App = () => {
       newComments[index] = data;
       setComments(newComments);
    }
-
 
 
    const handleDislike = (commentId, index) => {
